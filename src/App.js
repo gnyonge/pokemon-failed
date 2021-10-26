@@ -19,4 +19,10 @@ export const fetchPokemon = async (name) => {
   const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
   return res.data;
 }
+
+export const getKoreanData = async (name) => {
+  const res = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${name}`);
+  return res.data;
+} 
+
 export default App;

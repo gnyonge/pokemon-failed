@@ -8,21 +8,18 @@ const Home = () => {
   const [allPokemons, setAllPokemons] = useState([]);
   const [loadMore, setLoadMore] = useState('https://pokeapi.co/api/v2/pokemon?limit=20');
 
-  const getAllPokemons = () => {
+  const getAllPokemons = async () => {
 
     function createPokemonObject (results) {
       results.forEach( async (pokemon) => {
         const res = await fetchPokemon(pokemon.name)
-        setAllPokemons(currentList => [...currentList, res])
+        setAllPokemons(allPokemons => [...allPokemons, res])
       })
     }
 
-    axios.get(loadMore)
-    .then((res) => {
-      const pokemonData = res.data;
-      setLoadMore(pokemonData.next);
-      createPokemonObject(pokemonData.results);
-    })
+    const pokemonData = await axios.get(loadMore)
+    setLoadMore(pokemonData.data.next);
+    createPokemonObject(pokemonData.data.results);
   }
 
   useEffect(() => {
@@ -34,7 +31,7 @@ const Home = () => {
       <h1>포켓몬 에볼루션</h1>
       <div className="pokemon-container">
         <div className="all-container">
-          { allPokemons.map((pokemon, index) => 
+          { allPokemons.map((pokemon, index) => (
             <PokemonThumbnail 
               id={pokemon.id}
               name={pokemon.name}
@@ -42,7 +39,7 @@ const Home = () => {
               type={pokemon.types[0].type.name}
               key={index}
             />
-          )}
+          ))}
         </div>
         <button className="load-more" onClick={() => getAllPokemons()}>더보기</button>
       </div>
