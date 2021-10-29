@@ -167,7 +167,7 @@ h3 {
     margin: auto;
     overflow: hidden;
     width: 520px;
-    height: 350px;
+    height: auto;
     background: #f5f5f5;
     box-shadow: 5px 5px 15px rgba(186, 126, 126, 0.5);
     border-radius: 10px;
@@ -194,6 +194,7 @@ p {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    padding: 30px;
 }
 
 h1 {
@@ -204,7 +205,7 @@ h1 {
 
 h2 {
     color: #c3a1a0;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     margin-top: 10px;
 }
 
@@ -213,7 +214,6 @@ h2 {
     height: 85%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     padding-bottom: 5%;
 }
 
@@ -228,7 +228,7 @@ li {
 .desc {
     text-transform: none;
     letter-spacing: 0;
-    margin-bottom: 35px;
+    margin-bottom: 25px;
     color: #4e4e4e;
     font-size: 0.7em;
     line-height: 1.6em;
@@ -257,4 +257,32 @@ button:hover {
 
 .add {
     width: 93%;
+}
+
+@media (max-width: 480px) {
+    .detail-container {
+        width: 250px;
+        height: auto;
+        background: #f5f5f5;
+        box-shadow: 5px 5px 15px rgba(186, 126, 126, 0.5);
+        border-radius: 10px;
+        display: block;
+    }
+    .product {
+        width: auto;
+        height: auto;
+        align-items: center;
+        padding: 5% 10%;
+    }
+    .desc {
+        margin-right: 0px;
+    }
+    .button-container,
+    .genera-container {
+        display: flex;
+        justify-content: center;
+    }
+    .detail-image {
+        margin-top: 20px;
+    }
 }

@@ -1,29 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import { fetchPokemon, getKoreanData } from '../App';
+import { useSelector, useDispatch } from 'react-redux';
+import { getKoreanData } from '../App';
 
 const PokemonDetail = ({ match }) => {
   
   const name = match.params.name;
-  const [pokemonDetails, setPokemonDetails] = useState();
-  const [dataInKorean, setDataInKorean] = useState({});
+  const pokemonArray = useSelector(state => state.pokemonReducer.pokemonArray)
+  const pokemon = pokemonArray.find(pokemon => pokemon.name === name)
+  const koreanArray = useSelector(state => state.pokemonReducer.koreanArray)
+  const pokemonInKorean = koreanArray.find(pokemon => pokemon.name === name)
+
+
+  const [pokemonDetails, setPokemonDetails] = useState(pokemon);
+  const [dataInKorean, setDataInKorean] = useState(pokemonInKorean);
   const [loading, setLoading] = useState(true);
+
+  // const getKoreanName = async (name) => {
+  //   const res = await getKoreanData(name);
+  //   setDataInKorean(res)
+  //   setLoading(false);
+  // } 
   
-  const getKoreanName = async (name) => {
-    const res = await getKoreanData(name);
-    setDataInKorean(res)
-  } 
-  
-  const getPokemon = async (name) => {
-    const details = await fetchPokemon(name);
-    setPokemonDetails(details);
-    setLoading(false);
-  }
+  // const getPokemon = async (name) => {
+  //   const details = await fetchPokemon(name);
+  //   setPokemonDetails(details);
+  //   setLoading(false);
+  // }
 
   useEffect(() => {
-    getKoreanName(name);
-    getPokemon(name);
+    setLoading(false);
+    // getKoreanName(name);
+    // getPokemon(name);
   }, [])
 
+  
   return (
     <div className="card-container">
       {loading ? (
@@ -39,7 +49,9 @@ const PokemonDetail = ({ match }) => {
           </div>
           <div className="product">
             <div>
-              <h2>{dataInKorean.genera[1].genus}</h2>
+              <div className="genera-container">
+                <h2>{dataInKorean.genera[1].genus}</h2>
+              </div>
               <div className="desc">
                 <ul>
                   <li>
@@ -54,7 +66,7 @@ const PokemonDetail = ({ match }) => {
                 </ul>
               </div>
             </div>
-            <div>
+            <div className="button-container">
               <button className="add">like this pokemon</button>
             </div>
           </div>
