@@ -1,17 +1,16 @@
-import { getKoreanData } from "../App";
-
 const initialState = {
     pokemonArray: [],
     koreanArray: [],
+    likeArray: [],
 };
 
 const SET_POKEMONS = 'SET_POKEMONS';
 const SET_KOREAN_DATA = 'SET_KOREAN_DATA';
-const CLEAN_kOREAN_DATA = 'CLEAN_kOREAN_DATA';
+const LIKE_POKEMON = 'LIKE_POKEMON';
 
 export const setPokemons = pokemonArray => ({ type: SET_POKEMONS, pokemonArray });
 export const setKoreanData = koreanData => ({ type: SET_KOREAN_DATA, koreanData });
-export const cleanKoreanData = () => ({ type: CLEAN_kOREAN_DATA });
+export const likePokemon = pokemonName => ({ type: LIKE_POKEMON, pokemonName });
 
 export default function pokemonReducer(state = initialState, action) {
     switch (action.type) {
@@ -25,10 +24,16 @@ export default function pokemonReducer(state = initialState, action) {
                 ...state,
                 koreanArray: action.koreanData
             };
-        case CLEAN_kOREAN_DATA:
+        case LIKE_POKEMON:
+            if (state.likeArray.includes(action.pokemonName)) {
+                return {
+                    ...state,
+                    likeArray: state.likeArray.filter(name => name !== action.pokemonName)
+                }
+            }
             return {
                 ...state,
-                koreanArray: []
+                likeArray: state.likeArray.concat(action.pokemonName)
             }
         default:
             return state;

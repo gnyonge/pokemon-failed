@@ -1,19 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getKoreanData } from '../App';
+import { likePokemon } from '../modules/pokemonReducer';
 
 const PokemonDetail = ({ match }) => {
   
   const name = match.params.name;
+  const dispatch = useDispatch();
   const pokemonArray = useSelector(state => state.pokemonReducer.pokemonArray)
   const pokemon = pokemonArray.find(pokemon => pokemon.name === name)
   const koreanArray = useSelector(state => state.pokemonReducer.koreanArray)
   const pokemonInKorean = koreanArray.find(pokemon => pokemon.name === name)
-
+  const likeArray = useSelector(state => state.pokemonReducer.likeArray)
 
   const [pokemonDetails, setPokemonDetails] = useState(pokemon);
   const [dataInKorean, setDataInKorean] = useState(pokemonInKorean);
   const [loading, setLoading] = useState(true);
+
+
+  const like = (name) => {
+    dispatch(likePokemon(name));
+  }
 
   // const getKoreanName = async (name) => {
   //   const res = await getKoreanData(name);
@@ -67,7 +73,9 @@ const PokemonDetail = ({ match }) => {
               </div>
             </div>
             <div className="button-container">
-              <button className="add">like this pokemon</button>
+              <button className={ likeArray.includes(name) ? 'remove' : 'add' } onClick={() => like(name)}>
+                { likeArray.includes(name) ? '포켓몬 버리기 ..' : '포켓몬 잡기!' }
+              </button>
             </div>
           </div>
         </div>

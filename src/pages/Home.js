@@ -15,8 +15,6 @@ const Home = () => {
 
   const dispatch = useDispatch();
   const pokemons = useSelector(state => state.pokemonReducer.pokemonArray)
-  console.log(useSelector(state => state))
-
 
   const getAllPokemons = async () => {
     

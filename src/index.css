@@ -236,7 +236,13 @@ li {
     text-align: justify;
 }
 
-button {
+.add:hover {
+    background: #ba7e7e;
+    transition: all 0.4s ease-in-out;
+}
+
+.add {
+    width: 93%;
     background: #cda9ac;
     padding: 10px;
     display: inline-block;
@@ -250,13 +256,24 @@ button {
     cursor: pointer;
 }
 
-button:hover {
-    background: #ba7e7e;
+.remove:hover {
+    background: #6d90a5;
     transition: all 0.4s ease-in-out;
 }
 
-.add {
+.remove {
     width: 93%;
+    background: rgb(183, 209, 230);
+    padding: 10px;
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    margin: -1px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #f5f5f5;
+    cursor: pointer;
 }
 
 @media (max-width: 480px) {

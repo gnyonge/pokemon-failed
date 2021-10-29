@@ -4,6 +4,7 @@ import axios from 'axios';
 import Header from './components/Header';
 import Home from './pages/Home';
 import PokemonDetail from './pages/PokemonDetail';
+import PokemonBag from './pages/PokemonBag';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Header />
       <Route exact path="/" component={Home} />
       <Route path="/pokemon/:name" component={PokemonDetail} />
+      <Route path="/bag" component={PokemonBag} />
     </BrowserRouter>
   );
 }
