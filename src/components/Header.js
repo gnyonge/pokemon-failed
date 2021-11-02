@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 
-const Header = withRouter(({ location }) => {
-  console.log(location)
-  const [isHome, setIsHome] = useState(false);
+const Header = withRouter(({location}) => {
+  console.log(location,'엥')
   const [header, setHeader] = useState(false);
   const changeHeader = () => {
     if (window.scrollY >= 100) {
@@ -15,24 +15,32 @@ const Header = withRouter(({ location }) => {
 
   window.addEventListener('scroll', changeHeader)
 
-  useEffect(() => {
+
+  const setClass = () => {
     if (location.pathname === '/') {
-      setIsHome(true)
+      if (header) {
+        return 'header fixed-header'
+      } else {
+        return 'header'
+      }
     } else {
-      setIsHome(false)
+      return 'header fixed-header'
     }
-  }, [])
+  }
 
   return (
-    <div className={isHome && header ? 'header fixed-header ' : 'header'}>
-      <a href="/">
+    <div className={setClass()} style={location.pathname === '/' ? {position: 'fixed', zIndex: '999'} : {position: 'static'}}>
+      <Link to="/">
         <img src="/pokemon_logo.png" alt="logo" style={{width: '150px'}}/>
-      </a>
+      </Link>
       <div className="menu">
-        <p><a href="/">POKEMONS</a></p>
-        <p><a href="/bag">MY BAG</a></p>
+        <p><Link to="/">HOME</Link></p>
+        <p><Link to="/bag">MY BAG</Link></p>
       </div>
     </div>
+
+
+      
   )
 })
 

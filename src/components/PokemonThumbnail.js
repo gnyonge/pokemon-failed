@@ -3,10 +3,9 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const PokemonThumbnail = ({ id, name, image, type }) => {
-  const style = `thumb-container ${type}`;
+  const style = `thumb-container ${type} card__one`;
   const pokemonArray = useSelector(state => state.pokemonReducer.koreanArray)
-  const pokemon = pokemonArray.find(pokemon => pokemon.name === name).names[2].name
-  const nameInKorean= pokemon
+  const nameInKorean = pokemonArray.find(pokemon => pokemon.name === name).names[2].name
   
   return (
     <div className={style}>

@@ -25,15 +25,20 @@ export default function pokemonReducer(state = initialState, action) {
                 koreanArray: action.koreanData
             };
         case LIKE_POKEMON:
-            if (state.likeArray.includes(action.pokemonName)) {
+            console.log(state.likeArray)
+            if (state.likeArray.find(data => data.name === action.pokemonName) !== undefined) {
                 return {
                     ...state,
-                    likeArray: state.likeArray.filter(name => name !== action.pokemonName)
+                    likeArray: state.likeArray.filter(data => data.name !== action.pokemonName)
                 }
             }
             return {
                 ...state,
-                likeArray: state.likeArray.concat(action.pokemonName)
+                likeArray: state.likeArray.concat({
+                    name: action.pokemonName,
+                    koreanName: state.koreanArray.find(data => data.name === action.pokemonName).names[2].name,
+                    image: state.pokemonArray.find(data => data.name === action.pokemonName).sprites.other.dream_world.front_default,
+                })
             }
         default:
             return state;

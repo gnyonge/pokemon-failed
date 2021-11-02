@@ -13,6 +13,7 @@ const PokemonDetail = ({ match }) => {
   const pokemonInKorean = koreanArray.find(pokemon => pokemon.name === name)
   const likeArray = useSelector(state => state.pokemonReducer.likeArray)
 
+
   const pokemonDetails = pokemon
   const dataInKorean = pokemonInKorean
   const [loading, setLoading] = useState(true);
@@ -60,8 +61,8 @@ const PokemonDetail = ({ match }) => {
               </div>
             </div>
             <div className="button-container">
-              <button className={ likeArray.includes(name) ? 'remove' : 'add' } onClick={() => like(name)}>
-                { likeArray.includes(name) ? '포켓몬 버리기 ..' : '포켓몬 잡기!' }
+              <button className={ likeArray.find(data => data.name === name) !== undefined ? 'remove' : 'add' } onClick={() => like(name)}>
+                { likeArray.find(data => data.name === name) !== undefined ? '포켓몬 버리기 ..' : '포켓몬 잡기!' }
               </button>
             </div>
           </div>

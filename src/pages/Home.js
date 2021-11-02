@@ -46,7 +46,9 @@ const Home = () => {
   return (
     <div className="app-container">
       {loading ? (
-        <h1>로딩중...</h1>
+        <div className="loading">
+          <h1>로딩중...</h1>
+        </div>
       ) : (
       <>
         <div className="pokemon-container">
@@ -56,7 +58,7 @@ const Home = () => {
           <div className="all-container">
             { pokemons.map((pokemon, index) => (
               <PokemonThumbnail 
-              id={pokemon.id}
+                id={pokemon.id}
                 name={pokemon.name}
                 image={pokemon.sprites.other.dream_world.front_default}
                 type={pokemon.types[0].type.name}

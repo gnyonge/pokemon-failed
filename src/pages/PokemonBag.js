@@ -7,10 +7,12 @@ const PokemonBag = () => {
   const likeList = useSelector(state => state.pokemonReducer.likeArray)
 
   return (
-    <div>
-      { likeList.map( (name, index) => (
+    <div className="bag-container">
+      { likeList.map( (pokemon, index) => (
         <PokemonItem 
-          name={name}
+          name={pokemon.name}
+          koreanName={pokemon.koreanName}
+          image={pokemon.image}
           key={index}
         />
         ))}

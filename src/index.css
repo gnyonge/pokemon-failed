@@ -85,6 +85,13 @@ code {
     padding: 3rem 0.5rem;
 }
 
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 300px;
+}
+
 .pokemon-container {
     display: flex;
     flex-direction: column;
@@ -97,7 +104,10 @@ code {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    padding: 25px;
 }
+
+.bag-container {}
 
 .thumb-container {
     display: flex;
@@ -107,10 +117,15 @@ code {
     padding: 1.5rem 0;
     margin: 0.3rem;
     border: 1px solid #efefef;
-    border-radius: 0.2rem;
+    border-radius: 0.8rem;
     width: 160px;
     text-align: center;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.089);
+    transition: all 0.2s linear;
+}
+
+.thumb-container:hover {
+    transform: scale(1.1);
 }
 
 h3 {
@@ -154,7 +169,7 @@ h3 {
     border: 1px solid #c6c6c6;
     color: #444;
     padding: 0.5rem 1.5rem;
-    min-width: 50%;
+    min-width: 30%;
     margin-top: 1rem;
 }
 
