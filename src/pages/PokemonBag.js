@@ -3,20 +3,19 @@ import { useSelector } from 'react-redux';
 import PokemonItem from '../components/PokemonItem';
 
 const PokemonBag = () => {
-
   const likeList = useSelector(state => state.pokemonReducer.likeArray)
 
   return (
-    <div className="bag-container">
-      { likeList.map( (pokemon, index) => (
-        <PokemonItem 
-          name={pokemon.name}
-          koreanName={pokemon.koreanName}
-          image={pokemon.image}
-          key={index}
-        />
-        ))}
-    </div>
+      <div className="bag">
+        { likeList.map( (pokemon, index) => (
+          <PokemonItem 
+            name={pokemon.name}
+            koreanName={pokemon.koreanName}
+            image={pokemon.image}
+            key={index}
+          />
+         ))}
+      </div>
   )
 }
 

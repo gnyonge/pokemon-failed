@@ -89,7 +89,7 @@ code {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 300px;
+    height: 100vh;
 }
 
 .pokemon-container {
@@ -106,8 +106,6 @@ code {
     justify-content: center;
     padding: 25px;
 }
-
-.bag-container {}
 
 .thumb-container {
     display: flex;
@@ -163,14 +161,24 @@ h3 {
     background-color: rgba(0, 0, 0, 0.185);
 }
 
+.load-more:hover {
+    background: #948f8f;
+    transition: all 0.4s ease-in-out;
+}
+
 .load-more {
-    background: #f5f5f5 linear-gradient(#f5f5f5, #f1f1f1) repeat-x;
+    width: 10%;
+    background: #b3b9b3;
+    padding: 10px;
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    margin: -1px;
     border-radius: 2px;
-    border: 1px solid #c6c6c6;
-    color: #444;
-    padding: 0.5rem 1.5rem;
-    min-width: 30%;
-    margin-top: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #f5f5f5;
+    cursor: pointer;
 }
 
 .detail-image {
@@ -205,8 +213,53 @@ p {
     letter-spacing: 1px;
 }
 
+.item-name {
+    padding-top: 20px;
+    font-size: 15px;
+    display: inline-block;
+}
+
+.item-container {
+    width: 300px;
+    height: 300px;
+    background-image: url('./images/pokeball.png');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bag {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.delete {
+    text-align: center;
+    display: inline-block;
+    background: #ed2553;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    padding: 10px 20px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.delete:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
 .card-container {
-    padding: 30px;
+    height: 100vh;
+    display: flex;
+    justify-self: center;
+    align-items: center;
 }
 
 .header-image {
@@ -328,8 +381,17 @@ li {
 }
 
 @media (max-width: 480px) {
+    .card-container {
+        height: auto;
+        display: flex;
+        justify-self: center;
+        align-items: center;
+        padding-bottom: 30px;
+    }
     .detail-container {
-        width: 250px;
+        padding-bottom: 10px;
+        margin-top: 30px;
+        width: 330px;
         height: auto;
         background: #f5f5f5;
         box-shadow: 5px 5px 15px rgba(186, 126, 126, 0.5);
@@ -352,5 +414,8 @@ li {
     }
     .detail-image {
         margin-top: 20px;
+    }
+    .button-container {
+        width: 55%;
     }
 }

@@ -7,10 +7,12 @@ const PokemonItem = ({ name, koreanName, image }) => {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className="item-container">
       <img src={image} alt={name} style={style}/>
-      {koreanName}
-      <button onClick={() => dispatch(likePokemon(name))}>삭제</button>
+      <div>
+        <div className="item-name">{koreanName}</div>
+        <button className="delete" onClick={() => dispatch(likePokemon(name))}>X</button>
+      </div>
     </div>
   )
 }
