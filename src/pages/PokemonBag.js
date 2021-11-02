@@ -1,9 +1,19 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
+import PokemonItem from '../components/PokemonItem';
 
 const PokemonBag = () => {
+
+  const likeList = useSelector(state => state.pokemonReducer.likeArray)
+
   return (
     <div>
-      포켓몬 가방입니다
+      { likeList.map( (name, index) => (
+        <PokemonItem 
+          name={name}
+          key={index}
+        />
+        ))}
     </div>
   )
 }

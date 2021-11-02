@@ -6,14 +6,15 @@ const PokemonDetail = ({ match }) => {
   
   const name = match.params.name;
   const dispatch = useDispatch();
+  
   const pokemonArray = useSelector(state => state.pokemonReducer.pokemonArray)
   const pokemon = pokemonArray.find(pokemon => pokemon.name === name)
   const koreanArray = useSelector(state => state.pokemonReducer.koreanArray)
   const pokemonInKorean = koreanArray.find(pokemon => pokemon.name === name)
   const likeArray = useSelector(state => state.pokemonReducer.likeArray)
 
-  const [pokemonDetails, setPokemonDetails] = useState(pokemon);
-  const [dataInKorean, setDataInKorean] = useState(pokemonInKorean);
+  const pokemonDetails = pokemon
+  const dataInKorean = pokemonInKorean
   const [loading, setLoading] = useState(true);
 
 
@@ -21,22 +22,8 @@ const PokemonDetail = ({ match }) => {
     dispatch(likePokemon(name));
   }
 
-  // const getKoreanName = async (name) => {
-  //   const res = await getKoreanData(name);
-  //   setDataInKorean(res)
-  //   setLoading(false);
-  // } 
-  
-  // const getPokemon = async (name) => {
-  //   const details = await fetchPokemon(name);
-  //   setPokemonDetails(details);
-  //   setLoading(false);
-  // }
-
   useEffect(() => {
     setLoading(false);
-    // getKoreanName(name);
-    // getPokemon(name);
   }, [])
 
   

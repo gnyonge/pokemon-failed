@@ -1,23 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const PokemonThumbnail = ({ id, name, image, type }) => {
   const style = `thumb-container ${type}`;
   const pokemonArray = useSelector(state => state.pokemonReducer.koreanArray)
-  const pokemon = pokemonArray.find(pokemon => pokemon.name === name)
-  const pokemonName = pokemon.names[2].name
-  const [nameInKorean, setNameInKorean] = useState(pokemonName);
+  const pokemon = pokemonArray.find(pokemon => pokemon.name === name).names[2].name
+  const nameInKorean= pokemon
   
-  // const getKoreanName = async (name) => {
-  //   const res = await getKoreanData(name);
-  //   setNameInKorean(res.names[2].name)
-  // } 
-  
-  // useEffect(() => {
-  //   getKoreanName(name)
-  // }, [])
-
   return (
     <div className={style}>
       <div className="number">

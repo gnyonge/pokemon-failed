@@ -6,6 +6,7 @@ import PokemonThumbnail from '../components/PokemonThumbnail';
 import { fetchPokemon, getKoreanData } from '../App';
 import { setPokemons, setKoreanData } from '../modules/pokemonReducer';
 
+
 const Home = () => {
 
   const [allPokemons, setAllPokemons] = useState([]);
@@ -48,8 +49,10 @@ const Home = () => {
         <h1>로딩중...</h1>
       ) : (
       <>
-        <h1>포켓몬 에볼루션</h1>
         <div className="pokemon-container">
+          <div>
+            <img className="header-image" src='/pica.jpg' alt="헤더이미지" />
+          </div>
           <div className="all-container">
             { pokemons.map((pokemon, index) => (
               <PokemonThumbnail 
