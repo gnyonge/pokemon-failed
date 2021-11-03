@@ -3,15 +3,19 @@ import { useDispatch } from 'react-redux';
 import { likePokemon } from '../modules/pokemonReducer';
 
 const PokemonItem = ({ name, koreanName, image }) => {
-  const style = {width: '150px'}
   const dispatch = useDispatch();
 
   return (
-    <div className="item-container">
-      <img src={image} alt={name} style={style}/>
-      <div>
+    <div>
+      <div className="name-container">
+        <div style={{visibility: 'hidden'}}>
+          <button className="delete" onClick={() => dispatch(likePokemon(name))}>BYE</button>
+        </div>
         <div className="item-name">{koreanName}</div>
-        <button className="delete" onClick={() => dispatch(likePokemon(name))}>X</button>
+        <button className="delete" onClick={() => dispatch(likePokemon(name))}>BYE</button>
+      </div>
+      <div className="item-container">
+        <img src={image} alt={name}/>
       </div>
     </div>
   )
